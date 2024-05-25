@@ -1,0 +1,71 @@
+.LoginForm {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.Lcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #0a6c90; */
+    background-image:linear-gradient(to right,#003285, #0a6c90, #8d9fa6);
+    width: 40%;
+    height: 50%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    width: 84%;
+    padding: 10px;
+    margin: 10px;
+    background-color: #ff5c5c;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 1.3em;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff3c3c;
+}
+
+.p {
+    color: white;
+}
+
+.p>b {
+    font-size: 1.3em;
+}
+
+.no-underline {
+    text-decoration: none;
+    color: wheat;
+    font-weight: bold;
+}
+
+.no-underline:hover {
+    color: white;
+}
