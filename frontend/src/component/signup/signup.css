@@ -7,16 +7,16 @@
 }
 
 .Rcontainer {
+    padding-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     /* background-color: #0a6c90; */
     background-image:linear-gradient(to right,#003285, #0a6c90, #8d9fa6);
-    width: 40%;
-    height: 50%;
+    width: 50%;
+    height: 60%;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
 }
 
 form {
@@ -39,7 +39,7 @@ input[type="password"] {
 input[type="submit"] {
     width: 84%;
     padding: 10px;
-    margin: 10px;
+    margin: 5px;
     background-color: #ff5c5c;
     border: none;
     border-radius: 5px;

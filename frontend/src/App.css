@@ -1,4 +1,131 @@
-*{
+* {
   margin: 0;
   padding: 0;
+}
+
+footer {
+  background-color: black;
+}
+
+footer .ullist {
+  padding-left: 1.75rem;
+  color: white;
+  font-size: 0.875rem;
+  list-style-type: none;
+  line-height: 1.25rem;
+}
+
+footer .ullist a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.3em;
+}
+
+footer .ullist li {
+  margin: .25rem 0;
+  cursor: pointer;
+  color: #d4d4d4;
+  width: fit-content;
+}
+
+footer .ullist li:hover {
+  color: white;
+}
+
+
+footer .cr-con {
+  background-color: #232127;
+  color: white;
+  padding: 1rem 4rem;
+  text-align: center;
+}
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.foot>div {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.foot p {
+  margin: 0 0 20px 0;
+  color: white;
+}
+
+.foot .ullist,
+.foot ul {
+  list-style: none;
+  padding: 0;
+}
+
+.foot li {
+  margin-bottom: 10px;
+}
+
+.foot li a {
+  text-decoration: none;
+  color: #176B87;
+  transition: color 0.3s;
+}
+
+.foot li a:hover {
+  color: #f5e8c7;
+}
+
+.foot .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: rgb(214, 20, 20);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  font-size: 15px;
+}
+
+.foot .btn:hover{
+  background-color: rgb(255, 0, 0);
+  font-size: 1.3em;
+  color: white;
+}
+@media (min-width: 200px) and (max-width: 768px) {
+
+  .foot {
+    padding: 20px;
+  
+  }
+
+  .foot>div {
+    flex: 1;
+    padding: 0 20px;
+  }
+
+  .foot p {
+    margin: 0 0 20px 0;
+    color: white;
+  }
+
+  .foot .ullist,
+  .foot ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .foot li {
+    margin-bottom: 10px;
+  }
+
+  .foot li a {
+    text-decoration: none;
+    color: #176B87;
+    transition: color 0.3s;
+  }
+
+  .foot li a:hover {
+    color: #f5e8c7;
+  }
 }

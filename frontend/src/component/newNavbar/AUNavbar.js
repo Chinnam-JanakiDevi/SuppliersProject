@@ -12,9 +12,10 @@ const AUNavbar = () => {
                 </label>
                 <label className="logo">Suppliers</label>
                 <ul>
-                    <li><Link to="/Home">Home</Link></li>
-                    <li><Link to="/Login">Uniforms</Link></li>
-                    <li><Link to="/Home">Events</Link></li>
+                    <li><Link to="/AHome">Home</Link></li>
+                    <li><Link to="/Home">Details</Link></li>
+                    <li><Link to="/Home">AllEvents</Link></li>
+                    <li><Link to="/Home">OnlineBooked</Link></li>
                     <li><Link to="/" className="login">LogOut</Link></li>
                 </ul>
             </nav>

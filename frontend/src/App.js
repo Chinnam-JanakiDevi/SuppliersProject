@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, Link } from "react-router-dom"
 import Navbar from './component/navbar/Navbar';
 import Home from './component/home/Home';
 import Login from './component/login/Login';
@@ -8,6 +8,7 @@ import Register from './component/signup/signup';
 import UserView from './component/userDashboard/userview';
 import AdminView from './component/adminDashboard/adminview';
 import AUNavbar from './component/newNavbar/AUNavbar';
+import { AHome } from './component/home/Home';
 
 function App() {
   return (
@@ -21,7 +22,30 @@ function App() {
         <Route exact path="/UserView" element={<UserView />} />
         <Route exact path="/AdminView" element={<AdminView />} />
         <Route exact path="/AUNavbar" element={<AUNavbar />} />
+        <Route exact path='/AHome' element={<AHome />} />
       </Routes>
+      <footer>
+        <div className='foot'>
+          <div>
+            {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga commodi, atque aperiam ea temporibus necessitatibus aspernatur ducimus omnis iste. Dignissimos minus assumenda et impedit ipsa sapiente sit quis harum accusantium!</p> */}
+            <p>This is my portfolio providing all the details about my Education,Skills,Projects done by me..</p>
+            <a href="mailto:chinnam.janakidevi123@gmail.com" className="btn">Email Me</a>
+          </div>
+          <div className='ullist'>
+            <li><Link to="/AHome">Home</Link></li>
+            <li><Link to="/Home">Details</Link></li>
+            <li><Link to="/Home">AllEvents</Link></li>
+            <li><Link to="/Home">OnlineBooked</Link></li>
+          </div>
+          {/* <div>
+            <li><Link to="/AHome">Home</Link></li>
+            <li><Link to="/Home">Details</Link></li>
+            <li><Link to="/Home">AllEvents</Link></li>
+            <li><Link to="/Home">OnlineBooked</Link></li>
+          </div> */}
+        </div>
+        <div class='cr-con'>Copyright &copy; 2024 | Made by Janaki Devi</div>
+      </footer>
     </>
   );
 }

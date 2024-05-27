@@ -13,6 +13,8 @@ app.use(cors({
     methods:["post","get"],
     credentials:true
 }));
+// app.use(cors())
+// ja@gmail.com
 app.use(express.json());
 app.use(bodyParser.urlencoded({
     extended: true
