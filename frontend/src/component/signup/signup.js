@@ -17,7 +17,7 @@ const Register = () => {
     const handleInsert = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('https://suppliers-project-backend.vercel.app/users', { name, email, password });
+            const response = await axios.post('https://suppliers-projectbackend.vercel.app/users', { name, email, password });
             console.log(response.data);
             // setmessage(response.data.message)
             console.log(response.data.message);
