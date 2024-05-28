@@ -35,32 +35,37 @@ app.get("/",(req,res)=>{
     console.log("hello");
     res.json("hello")
 })
-app.post('/login', async (req, res) => {
+// Global CORS handling (if needed)
+app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "https://businessproject-jet.vercel.app");
     res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    const { email, password } = req.body
-    const details = {
-        email: email,
-        password: password
-    };
+    next();
+});
+
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+    const details = { email, password };
+
     console.log(details);
+
     try {
         const loginuser = await regTable.findOne({ email: email });
-        console.log(loginuser);
-        if (loginuser.email === email && loginuser.password===password) {
-            return res.status(201).json({ msg: "suucess" })
+        if (!loginuser) {
+            return res.status(404).json({ message: 'User not found' });
         }
-        else {
-            return res.status(409).json({ message: 'no data' });
-        }
-    }
-    catch (error) {
-        console.log("Erroor!");
-        res.status(500).json({ message: 'Internal server error' });
 
+        const isPasswordValid = await bcrypt.compare(password, loginuser.password);
+        if (isPasswordValid) {
+            return res.status(200).json({ msg: "success" });
+        } else {
+            return res.status(401).json({ message: 'Invalid credentials' });
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: 'Internal server error' });
     }
-})
+});
 
 // POST endpoint to handle user registration
 app.post('/users', async (req, res) => {
