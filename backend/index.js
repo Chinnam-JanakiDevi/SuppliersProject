@@ -36,6 +36,9 @@ app.get("/",(req,res)=>{
     res.json("hello")
 })
 app.post('/login', async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://businessproject-jet.vercel.app");
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
     const { email, password } = req.body
     const details = {
         email: email,
