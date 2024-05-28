@@ -40,22 +40,25 @@ app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const details = { email, password };
 
-    console.log(details);
+    console.log("Received login details:", details);
 
     try {
         const loginuser = await regTable.findOne({ email: email });
         if (!loginuser) {
+            console.log("User not found");
             return res.status(404).json({ message: 'User not found' });
         }
 
         const isPasswordValid = await bcrypt.compare(password, loginuser.password);
         if (isPasswordValid) {
+            console.log("Login successful");
             return res.status(200).json({ msg: "success" });
         } else {
+            console.log("Invalid credentials");
             return res.status(401).json({ message: 'Invalid credentials' });
         }
     } catch (error) {
-        console.error("Error:", error);
+        console.error("Error during login:", error);
         res.status(500).json({ message: 'Internal server error' });
     }
 });
