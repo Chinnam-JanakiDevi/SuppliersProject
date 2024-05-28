@@ -9,7 +9,7 @@ const app = express();
 const PORT = 7000;
 
 app.use(cors({
-    origin:["https://suppliers-project-backend.vercel.app"],
+    origin:["https://suppliers-projectbackend.vercel.app"],
     methods:["post","get"],
     credentials:true
 }));
