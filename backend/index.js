@@ -61,6 +61,9 @@ app.post('/login', async (req, res) => {
 
 // POST endpoint to handle user registration
 app.post('/users', async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://suppliers-project-frontend.vercel.app");
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
     const { name, email, password } = req.body;
     const data = {
         name: name,
