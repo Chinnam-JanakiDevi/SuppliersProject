@@ -2,23 +2,22 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const suppliersList = require("./model/suppliersList")
-const regTable = require("./model/userlogin")
+const suppliersList = require("./model/suppliersList"); // Ensure this path is correct
+const regTable = require("./model/userlogin"); // Ensure this path is correct
 
 const app = express();
 const PORT = 7000;
 
+// Use cors middleware for handling CORS issues
 app.use(cors({
-    origin:["https://businessproject-jet.vercel.app"],
-    methods:["post","get"],
-    credentials:true
+    origin: "https://businessproject-jet.vercel.app",
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
 }));
-// app.use(cors())
-// ja@gmail.com
+
 app.use(express.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Connection to cloud MongoDB with the correct database suppliersDB
 const url = "mongodb+srv://gofood:mlRWAjwjIoCKM3TP@cluster0.5qbblkc.mongodb.net/suppliersDB?retryWrites=true&w=majority&appName=Cluster0/suppliersDB";
@@ -31,16 +30,10 @@ db.on('error', (err) => {
 db.once('open', () => {
     console.log('Connected successfully to MongoDB');
 });
-app.get("/",(req,res)=>{
+
+app.get("/", (req, res) => {
     console.log("hello");
-    res.json("hello")
-})
-// Global CORS handling (if needed)
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://businessproject-jet.vercel.app");
-    res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    next();
+    res.json("hello");
 });
 
 app.post('/login', async (req, res) => {
@@ -67,32 +60,25 @@ app.post('/login', async (req, res) => {
     }
 });
 
-// POST endpoint to handle user registration
 app.post('/users', async (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://businessproject-jet.vercel.app");
-    res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
     const { name, email, password } = req.body;
-    const data = {
-        name: name,
-        email: email,
-        password: password
-    };
 
     try {
         // Check if the email already exists
         const existingUser = await regTable.findOne({ email: email });
-        // console.log(existingUser);
         if (existingUser) {
             console.log("Email already exists");
             return res.status(409).json({ message: 'Email already exists' });
         }
 
+        // Hash the password before saving
+        const hashedPassword = await bcrypt.hash(password, 10);
+
         // If email does not exist, create a new user
-        const user = new regTable(data);
+        const user = new regTable({ name, email, password: hashedPassword });
         await user.save();
 
-        console.log(`Received: Name - ${name}, Email - ${email}, Password - ${password}`);
+        console.log(`Received: Name - ${name}, Email - ${email}`);
         res.status(201).json({ message: 'User registered successfully', data: { name, email } });
     } catch (err) {
         console.error("Error occurred:", err);
@@ -101,7 +87,7 @@ app.post('/users', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port  http://localhost:${PORT}`);
+    console.log(`Server is running on port http://localhost:${PORT}`);
 });
 
 
