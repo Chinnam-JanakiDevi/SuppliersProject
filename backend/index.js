@@ -2,22 +2,23 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const suppliersList = require("./model/suppliersList"); // Ensure this path is correct
-const regTable = require("./model/userlogin"); // Ensure this path is correct
+const suppliersList = require("./model/suppliersList")
+const regTable = require("./model/userlogin")
 
 const app = express();
 const PORT = 7000;
 
-// Use cors middleware for handling CORS issues
 app.use(cors({
-    origin: "https://businessproject-jet.vercel.app",
-    methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
+    origin:["https://businessproject-jet.vercel.app"],
+    methods:["post","get"],
+    credentials:true
 }));
-
+// app.use(cors())
+// ja@gmail.com
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 // Connection to cloud MongoDB with the correct database suppliersDB
 const url = "mongodb+srv://gofood:mlRWAjwjIoCKM3TP@cluster0.5qbblkc.mongodb.net/suppliersDB?retryWrites=true&w=majority&appName=Cluster0/suppliersDB";
@@ -30,58 +31,60 @@ db.on('error', (err) => {
 db.once('open', () => {
     console.log('Connected successfully to MongoDB');
 });
-
-app.get("/", (req, res) => {
+app.get("/",(req,res)=>{
     console.log("hello");
-    res.json("hello");
-});
-
+    res.json("hello")
+})
 app.post('/login', async (req, res) => {
-    const { email, password } = req.body;
-    const details = { email, password };
-
-    console.log("Received login details:", details);
-
+    const { email, password } = req.body
+    const details = {
+        email: email,
+        password: password
+    };
+    console.log(details);
     try {
         const loginuser = await regTable.findOne({ email: email });
-        if (!loginuser) {
-            console.log("User not found");
-            return res.status(404).json({ message: 'User not found' });
+        console.log(loginuser);
+        if (loginuser.email === email && loginuser.password===password) {
+            return res.status(201).json({ msg: "suucess" })
         }
-
-        const isPasswordValid = await bcrypt.compare(password, loginuser.password);
-        if (isPasswordValid) {
-            console.log("Login successful");
-            return res.status(200).json({ msg: "success" });
-        } else {
-            console.log("Invalid credentials");
-            return res.status(401).json({ message: 'Invalid credentials' });
+        else {
+            return res.status(409).json({ message: 'no data' });
         }
-    } catch (error) {
-        console.error("Error during login:", error);
-        res.status(500).json({ message: 'Internal server error' });
     }
-});
+    catch (error) {
+        console.log("Erroor!");
+        res.status(500).json({ message: 'Internal server error' });
 
+    }
+})
+
+// POST endpoint to handle user registration
 app.post('/users', async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://businessproject-jet.vercel.app");
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
     const { name, email, password } = req.body;
+    const data = {
+        name: name,
+        email: email,
+        password: password
+    };
 
     try {
         // Check if the email already exists
         const existingUser = await regTable.findOne({ email: email });
+        // console.log(existingUser);
         if (existingUser) {
             console.log("Email already exists");
             return res.status(409).json({ message: 'Email already exists' });
         }
 
-        // Hash the password before saving
-        const hashedPassword = await bcrypt.hash(password, 10);
-
         // If email does not exist, create a new user
-        const user = new regTable({ name, email, password: hashedPassword });
+        const user = new regTable(data);
         await user.save();
 
-        console.log(`Received: Name - ${name}, Email - ${email}`);
+        console.log(`Received: Name - ${name}, Email - ${email}, Password - ${password}`);
         res.status(201).json({ message: 'User registered successfully', data: { name, email } });
     } catch (err) {
         console.error("Error occurred:", err);
@@ -90,7 +93,7 @@ app.post('/users', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port http://localhost:${PORT}`);
+    console.log(`Server is running on port  http://localhost:${PORT}`);
 });
 
 
