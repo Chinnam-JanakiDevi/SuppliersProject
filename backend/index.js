@@ -9,12 +9,11 @@ const app = express();
 const PORT = 7000;
 
 app.use(cors({
-    origin:["https://suppliers-project-backend.vercel.app"],
+    origin:["https://businessproject-jet.vercel.app"],
     methods:["post","get"],
     credentials:true
 }));
 // app.use(cors())
-// ja@gmail.com
 app.use(express.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -36,6 +35,9 @@ app.get("/",(req,res)=>{
     res.json("hello")
 })
 app.post('/login', async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://businessproject-jet.vercel.app");
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
     const { email, password } = req.body
     const details = {
         email: email,
@@ -61,6 +63,9 @@ app.post('/login', async (req, res) => {
 
 // POST endpoint to handle user registration
 app.post('/users', async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://businessproject-jet.vercel.app");
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
     const { name, email, password } = req.body;
     const data = {
         name: name,

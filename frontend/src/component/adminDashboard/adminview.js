@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import AUNavbar from "../newNavbar/AUNavbar";
+import AdminNav from "../adminNavbar/adminNav";
 
 const AdminView = () => {
     const location = useLocation();
@@ -8,7 +8,7 @@ const AdminView = () => {
     console.log(data);
     return (
         <div>
-            <AUNavbar />
+            <AdminNav />
             <p>Admin</p>
             {data}
             {name}

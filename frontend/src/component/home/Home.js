@@ -4,7 +4,7 @@ import Navbar from '../navbar/Navbar';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Home.css';
-import AUNavbar from '../newNavbar/AUNavbar';
+import AdminNav from '../adminNavbar/adminNav';
 
 const ExampleCarouselImage = ({ src, alt }) => {
     return <img className="d-block w-100" src={src} alt={alt} />;
@@ -63,7 +63,7 @@ export const AHome = () => {
 
   return (
     <>
-    <AUNavbar />
+    <AdminNav />
       <Carousel activeIndex={index} onSelect={handleSelect}>
         <Carousel.Item>
           <ExampleCarouselImage1 src="https://images.unsplash.com/photo-1464454709131-ffd692591ee5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Zm9vZCUyMHN1cHBsaWVycyUyMGluJTIwZXZlbnRzfGVufDB8fDB8fHww" alt="First slide" />

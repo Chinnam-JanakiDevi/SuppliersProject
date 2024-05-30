@@ -1,7 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
 import { Routes, Route, Link } from "react-router-dom"
-import Navbar from './component/navbar/Navbar';
 import Home from './component/home/Home';
 import Login from './component/login/Login';
 import Register from './component/signup/signup';
@@ -9,13 +8,19 @@ import UserView from './component/userDashboard/userview';
 import AdminView from './component/adminDashboard/adminview';
 import AUNavbar from './component/newNavbar/AUNavbar';
 import { AHome } from './component/home/Home';
+import NavigationBar from './component/navbar/Navbar';
+import { Uniforms } from './component/uniforms/Uniforms';
+import AdminNav from './component/adminNavbar/adminNav';
+import { AUniforms } from './component/uniforms/Uniforms';
+import { UsersList } from './component/usersList/usersList';
+import { OnlineBook } from './component/booking/onlinebooking';
 
 function App() {
   return (
     <>
       {/* <Navbar /> */}
       <Routes>
-        <Route exact path="/" element={<Navbar />} />
+        <Route exact path="/" element={<NavigationBar />} />
         <Route exact path="/Home" element={<Home />} />
         <Route exact path="/Login" element={<Login />} />
         <Route exact path="/Register" element={<Register />} />
@@ -23,6 +28,11 @@ function App() {
         <Route exact path="/AdminView" element={<AdminView />} />
         <Route exact path="/AUNavbar" element={<AUNavbar />} />
         <Route exact path='/AHome' element={<AHome />} />
+        <Route exact path='/Uniforms' element={<Uniforms />} />
+        <Route exact path='/AUniforms' element={<AUniforms />} />
+        <Route exact path='/AdminNav' element={<AdminNav />} />
+        <Route exact path='/UsersList' element={<UsersList />} />
+        <Route exact path='/OnlineBook' element={<OnlineBook />} />
       </Routes>
       <footer>
         <div className='foot'>
