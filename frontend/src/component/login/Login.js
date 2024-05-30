@@ -15,9 +15,7 @@ const Login = () => {
         e.preventDefault()
         console.log(email, password);
         try {
-            const response = await axios.post('https://suppliers-projectbackend.vercel.app/login', { email, password });
-            // const response = await axios.post('http://localhost:7000/login', { email, password });
-
+            const response = await axios.post('http://localhost:7000/login', { email, password });
             console.log(response.data);
             setIsSuccess(true);
             setShowPopup(true)
