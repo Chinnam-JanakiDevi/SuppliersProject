@@ -242,6 +242,20 @@ app.put('/updateUser/:id', async (req, res) => {
     }
 });
 
+app.post("/onlineBookedList",async(req,res)=>{
+    res.setHeader("Access-Control-Allow-Origin", "https://businessproject-jet.vercel.app");
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    try{
+    const bookedlist =await bookTable.find({})
+    console.log(bookedlist);
+    res.status(200).json({ message: 'Users retrieved', data: bookedlist });
+    }
+    catch(error){
+        console.log(error);
+    }
+})
+
 app.listen(PORT, () => {
     console.log(`Server is running on port  http://localhost:${PORT}`);
 });

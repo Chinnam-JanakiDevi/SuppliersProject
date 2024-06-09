@@ -16,9 +16,11 @@ import { UsersList } from './component/usersList/usersList';
 import { OnlineBook } from './component/booking/onlinebooking';
 import { Gallery } from './component/gallery/Gallery';
 import { Events } from './component/gallery/Gallery';
+import { AdminEvents } from './component/gallery/Gallery';
 import { UHome } from './component/home/Home';
 import { MyDetails } from './component/myDetails/MyDetails';
 import { UserEvents } from './component/myDetails/MyDetails';
+import { OnlineBooked } from './component/booking/onlinebooking';
 
 function App() {
   return (
@@ -42,7 +44,9 @@ function App() {
         <Route exact path='/Gallery' element={<Gallery />} />
         <Route exact path='/UserEvents' element={<UserEvents />} />        
         <Route exact path='/MyDetails' element={<MyDetails />} />
-        <Route exact path='/Events' element={<Events />} />
+        <Route exact path='/Events' element={<Events />} />      
+        <Route exact path='/AdminEvents' element={<AdminEvents />} />      
+        <Route exact path='/OnlineBooked' element={<OnlineBooked />} />
       </Routes>
       <footer>
         <div className='foot'>
@@ -64,7 +68,7 @@ function App() {
             <li><Link to="/Home">OnlineBooked</Link></li>
           </div> */}
         </div>
-        <div class='cr-con'>Copyright &copy; 2024 | Made by Janaki Devi</div>
+        <div className='cr-con'>Copyright &copy; 2024 | Made by Janaki Devi</div>
       </footer>
     </>
   );

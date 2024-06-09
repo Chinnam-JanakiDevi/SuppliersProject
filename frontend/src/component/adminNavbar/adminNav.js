@@ -15,7 +15,7 @@ const AdminNav = () => {
                             <Nav.Link as={Link} to="/AHome" className="nav-link-custom">Home</Nav.Link>
                             <Nav.Link as={Link} to="/AUniforms" className="nav-link-custom">Uniforms</Nav.Link>
                             <Nav.Link as={Link} to="/UsersList" className="nav-link-custom">UsersList</Nav.Link>
-                            <Nav.Link as={Link} to="/Events" className="nav-link-custom">Events</Nav.Link>
+                            <Nav.Link as={Link} to="/AdminEvents" className="nav-link-custom">Events</Nav.Link>
                             <Nav.Link as={Link} to="/OnlineBooked" className="nav-link-custom">OnlineBooked</Nav.Link>
                             <Nav.Link as={Link} to="/" className="login">LogOut</Nav.Link>
                         </Nav>

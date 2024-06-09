@@ -1,3 +1,4 @@
+import AdminNav from "../adminNavbar/adminNav";
 import NavigationBar from "../navbar/Navbar"
 import './Gallery.css'
 
@@ -58,21 +59,12 @@ export const Events = () => {
         </>
     );
 };
-// export const Events=()=>{
-//     return(
-//         <>
-//         <NavigationBar />
-//         <div>
-//         <h1>We do Events like</h1>
-//         <ul>
-//             <li>Marriages</li>
-//             <li>Marriages</li>
-//             <li>Marriages</li>
-//             <li>Marriages</li>
-//             <li>Marriages</li>
-//             <li>Marriages</li>
-//         </ul>
-//         </div>
-//         </>
-//     )
-// }
+export const AdminEvents = () => {
+    return (
+        <>
+            <AdminNav />
+            <p>Admin events
+            </p>
+        </>
+    )
+}
