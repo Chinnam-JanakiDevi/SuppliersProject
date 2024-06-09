@@ -12,14 +12,13 @@ import AUNavbar from "../newNavbar/AUNavbar";
 
 const UserView = () => {
     const location = useLocation();
-    const { data, name } = location.state || {};
-    console.log(data);
+    const { data} = location.state || {};
     return (
         <div>
-            <AUNavbar />
-            <p>User</p>
-            {data}
-            {name}
+            <AUNavbar data={data}/>
+            <p>Welcome <b>{data.split("@gmail.com")}</b></p>
+            
+            {/* {name} */}
         </div>
     );
 };

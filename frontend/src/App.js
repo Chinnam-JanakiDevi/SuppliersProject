@@ -14,6 +14,11 @@ import AdminNav from './component/adminNavbar/adminNav';
 import { AUniforms } from './component/uniforms/Uniforms';
 import { UsersList } from './component/usersList/usersList';
 import { OnlineBook } from './component/booking/onlinebooking';
+import { Gallery } from './component/gallery/Gallery';
+import { Events } from './component/gallery/Gallery';
+import { UHome } from './component/home/Home';
+import { MyDetails } from './component/myDetails/MyDetails';
+import { UserEvents } from './component/myDetails/MyDetails';
 
 function App() {
   return (
@@ -28,11 +33,16 @@ function App() {
         <Route exact path="/AdminView" element={<AdminView />} />
         <Route exact path="/AUNavbar" element={<AUNavbar />} />
         <Route exact path='/AHome' element={<AHome />} />
+        <Route exact path='/UHome' element={<UHome />} />
         <Route exact path='/Uniforms' element={<Uniforms />} />
         <Route exact path='/AUniforms' element={<AUniforms />} />
         <Route exact path='/AdminNav' element={<AdminNav />} />
         <Route exact path='/UsersList' element={<UsersList />} />
         <Route exact path='/OnlineBook' element={<OnlineBook />} />
+        <Route exact path='/Gallery' element={<Gallery />} />
+        <Route exact path='/UserEvents' element={<UserEvents />} />        
+        <Route exact path='/MyDetails' element={<MyDetails />} />
+        <Route exact path='/Events' element={<Events />} />
       </Routes>
       <footer>
         <div className='foot'>

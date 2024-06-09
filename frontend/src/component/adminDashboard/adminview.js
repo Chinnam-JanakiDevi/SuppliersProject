@@ -4,16 +4,22 @@ import AdminNav from "../adminNavbar/adminNav";
 
 const AdminView = () => {
     const location = useLocation();
-    const { data, name } = location.state || {};
+    const { data} = location.state || {};
     console.log(data);
     return (
         <div>
             <AdminNav />
             <p>Admin</p>
             {data}
-            {name}
+            {/* {name} */}
         </div>
     );
 };
 
 export default AdminView;
+
+export const BookedList=()=>{
+    return(
+        <></>
+    )
+}

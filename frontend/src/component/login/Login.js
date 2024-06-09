@@ -21,14 +21,13 @@ const Login = () => {
             setShowPopup(true)
             if (email === "ja@gmail.com" || email === "mani@gmail.com") {
                 setTimeout(() => {
-                    navigate('/AdminView', { state: { data:email, name: "devi" } });
-
+                    navigate('/AdminView', { state: { data:email } });
                 }, 3000);
             }
             else {
                 setTimeout(() => {
-                    navigate('/UserView', { state: { data: "janaki", name: "devi" } });
-
+                    // navigate('/UserView', { state: { data: email, name: "devi" } });
+                    navigate('/UserView', { state: { data: email } });
                 }, 3000);
             }
         }

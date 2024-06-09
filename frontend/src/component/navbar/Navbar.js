@@ -41,7 +41,7 @@ const NavigationBar = () => {
                         <Nav className="ms-auto">
                             <Nav.Link as={Link} to="/Home" className="nav-link-custom">Home</Nav.Link>
                             <Nav.Link as={Link} to="/Uniforms" className="nav-link-custom">Uniforms</Nav.Link>
-                            <Nav.Link as={Link} to="/Home" className="nav-link-custom">Events</Nav.Link>
+                            <Nav.Link as={Link} to="/Events" className="nav-link-custom">Events</Nav.Link>
                             <Nav.Link as={Link} to="/Gallery" className="nav-link-custom">Gallery</Nav.Link>
                             <Nav.Link as={Link} to="/OnlineBook" className="nav-link-custom">BookOnline</Nav.Link>
                             <Nav.Link as={Link} to="/Register" className="login">Sign Up/In</Nav.Link>
